@@ -5,8 +5,6 @@ def solve_runes(runes: str):
     first_num = ""
     second_num = ""
     result = ""
-    if runes[0] == "?" or runes[0] == "-" and runes[1] == "0":
-        possible_digits.pop(possible_digits.index("0"))
     for i, char in enumerate(runes):
         if not operator and char in "+-*" and i != 0:
             operator = char
@@ -17,6 +15,8 @@ def solve_runes(runes: str):
             result = runes[i + 1:]
         if char in possible_digits:
             possible_digits.pop(possible_digits.index(char))
+    if runes[0] == "?" or runes[0] == "-" and runes[1] == "0":
+        possible_digits.pop(possible_digits.index("0"))
     for char in possible_digits:
         if operator == "*":
             if int(first_num.replace("?", char)) * int(second_num.replace("?", char)) == int(result.replace("?", char)):
