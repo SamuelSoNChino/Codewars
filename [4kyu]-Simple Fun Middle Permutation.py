@@ -7,12 +7,10 @@ def middle_permutation(string):
     else:
         result = ""
         index = 0
+        result = letters.pop(len(letters) // 2)
+        result += letters.pop(len(letters) // 2 - 1)
         for _ in range(len(letters)):
-            if index % 2 == 1:
-                result += letters.pop(-1)
-            else:
-                result += letters.pop(len(letters) // 2)
-
+            result += letters.pop(-1)
     return result
 
 
@@ -21,5 +19,4 @@ print(middle_permutation("abcd"), "bdca")
 print(middle_permutation("abcdx"), "cbxda")
 print(middle_permutation("abcdxg"), "cxgdba")
 print(middle_permutation("abcdxgz"), "dczxgba")
-
 
